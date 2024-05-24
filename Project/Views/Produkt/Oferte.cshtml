@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Produkt>
+
+@{
+    ViewData["Title"] = "Lista e Produkteve Oferte";
+}
+@if (Model.Count() < 1)
+{
+    <h3>Nuk gjendet asnje produkt</h3>
+}
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-5 col-xs-7 border-primary mb-4">
+            <div class="card mb-3" style="width:22rem;">
+                <div class="row g-0">
+                    <div class="col-md-12">
+                        <div class="card-header text-white bg-danger">
+                            <p class="card-text">
+                                <h5 class="card-title">
+                                    @item.Emri
+                                </h5>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <img width="150" height="150" src="~/images/@item.Foto" /><br>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card-body">
+                            <p class="card-text">@item.Pershkrimi</p>
+                            <p class="card-text text-success">@item.Cmimi ALL</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="card-footer bg-white">
+                            <p class="card-text">
+                                <a class="btn btn-primary float-left" asp-action="Details" asp-route-id="@item.Id">
+                                    Detajet
+                                </a>
+                                <a class="btn btn-success float-end" asp-controller="Cart" asp-action="Add" asp-route-id="@item.Id">Shto ne Karte</a>
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    }
+</div>

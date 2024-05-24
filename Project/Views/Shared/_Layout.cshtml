@@ -1,0 +1,183 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - SuperMarket</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+    <link href="~/img/favicon.ico" rel="icon">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <link href="~/lib/animate/animate.min.css" rel="stylesheet">
+    <link href="~/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/main.js"></script>
+   
+    <link href="~/css/style.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="~/SuperMarket.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+
+        <div class="container-fluid">
+            <div class="row bg-secondary py-1 px-xl-5">
+                <div class="col-lg-6 d-none d-lg-block">
+                    <div class="d-inline-flex align-items-center h-100">
+                        <a asp-controller="Home" asp-action="Info">Info</a>|
+                        <a asp-action="Contact" asp-controller="Home">Kontakt</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center text-lg-right">
+                    <div class="d-inline-flex align-items-center">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">Account</button>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                     <partial name="_LoginPartial" />
+                            </div>
+                        </div>
+                        
+                    </div>
+                
+                </div>
+            </div>
+            <div class="row align-items-center bg-light py-3 px-xl-5 d-none d-lg-flex">
+                <div class="col-lg-4">
+                    <a href="" class="text-decoration-none">
+                        <span class="h1 text-uppercase text-success bg-dark px-2">Super</span>
+                        <span class="h1 text-uppercase text-dark bg-success px-2 ml-n1">Market</span>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-6 text-left">
+                    <form asp-controller="Produkt" asp-action="Index" method="get">
+                        <p>
+                            <input type="text" name="StringKerkimi" />
+                            <input class="btn btn-success" type="submit" value="Kerko" />
+                        </p>
+                    </form>
+                </div>
+                <div class="col-lg-4 col-6 text-right">
+                    <p class="m-0">Kontakti</p>
+                    <h5 class="m-0">+355 68 34 56 789</h5>
+                </div>
+            </div>
+        </div>
+       
+        <div class="container-fluid bg-dark mb-30">
+            <div class="row px-xl-5">
+                
+                <div class="col-lg-9">
+                    <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-0">
+                        <a href="" class="text-decoration-none d-block d-lg-none">
+                            <span class="h1 text-uppercase text-dark bg-light px-2">Super</span>
+                            <span class="h1 text-uppercase text-light bg-primary px-2 ml-n1">Market</span>
+                        </a>
+                        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                            <div class="navbar-nav mr-auto py-0">
+                                <a asp-action="Index" asp-controller="Home" class="nav-item nav-link active">Home</a>
+                                <a asp-action="Index" asp-controller="Produkt" class="nav-item nav-link">Produkte</a>
+                                <a asp-action="Oferte" asp-controller="Produkt" class="nav-item nav-link">Oferta</a>
+                                 <a asp-action="PorositEMia" asp-controller="Porosi" class="nav-item nav-link">Historia e Porosive</a>
+                                <div class="nav-item dropdown">
+                                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Faqet <i class="fa fa-angle-down mt-1"></i></a>
+                                    <div class="dropdown-menu bg-primary rounded-0 border-0 m-0">
+                                        <a asp-action="Index" asp-controller="Cart" class="dropdown-item">Shporta</a>
+                                        <a asp-action="Index" asp-controller="Furnizues" class="dropdown-item">Furnizuesit</a>
+                                    </div>
+                                </div>
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    <div class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" >Mjetet e Adminit<i class="fa fa-angle-down mt-1"></i></a>
+                                        <div class="dropdown-menu bg-primary rounded-0 border-0 m-0">
+                                            <a asp-action="Create" asp-controller="Produkt" class="dropdown-item">Shto Produkt</a>
+                                            <a asp-action="Create" asp-controller="Furnizues" class="dropdown-item">Shto Furnizues</a>
+                                            <a asp-action="Index" asp-controller="Kategori" class="dropdown-item">Kategori</a>
+                                            <a asp-action="Index" asp-controller="Porosi" class="dropdown-item">Porosi</a>
+                                        </div>
+                                    </div>
+                                }
+                                <a asp-action="Contact" asp-controller="Home" class="nav-item nav-link">Kontakto</a>
+                            </div>
+                           
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+      
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            <div class="row">
+                <div class="col-3">
+                    <vc:kategorit />
+                    <div class="bg-success mt-3 p-3 text-white">
+                        <vc:small-cart />
+                    </div>
+                </div>
+                <div class="col">
+                    <partial name="_NotificationPartial" />
+                    @RenderBody()
+                </div>
+            </div>
+        </main>
+    </div>
+    <div class="container-fluid bg-dark text-secondary mt-5 pt-5">
+       <div class="row px-xl-5 pt-5">
+            <div class="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
+                <h5 class="text-secondary text-uppercase mb-4">Menyrat e Kontaktimit</h5>
+                <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>Fresku,Tirane,Shqiperi</p>
+                <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>info@example.com</p>
+                <p class="mb-0"><i class="fa fa-phone-alt text-primary mr-3"></i>+355 068 34 56 789</p>
+            </div>
+            <div class="col-lg-8 col-md-12">
+                <div class="row">
+                    <div class="col-md-4 mb-5">
+                    
+                        <div>
+                            <a asp-action="Index" asp-controller="Home"><i class="fa fa-angle-right mr-2"></i>Home</a>
+                            <a asp-action="Index" asp-controller="Produkt"><i class="nav-item nav-link"></i>Produkte</a>
+                            <a asp-action="Oferte" asp-controller="Produkt"><i class="nav-item nav-link"></i>Oferta</a>
+                            <a asp-action="Index" asp-controller="Cart"><i class="nav-item nav-link" ></i>Shporta</a> 
+                            <a asp-action="Contact" asp-controller="Home"><i class="nav-item nav-link"></i>Kontakto</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-5">
+                        
+                        <h6 class="text-secondary text-uppercase mt-4 mb-3">Na Ndiqni</h6>
+                        <div class="d-flex">
+                            <a class="btn btn-primary btn-square mr-2" href="https://www.facebook.com/sparalbania/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-primary btn-square" href="" target="_blank"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row border-top mx-xl-5 py-4" style="border-color: rgba(256, 256, 256, .1) !important;">
+            <div class="col-md-6 px-xl-0">
+                <p class="mb-md-0 text-center text-md-left text-secondary">
+                    &copy; <a class="text-primary" href="#">Domain</a>. All Rights Reserved. Designed
+                    by
+                    <a class="text-primary" href="https://htmlcodex.com">HTML Codex</a>
+                </p>
+            </div>
+            <div class="col-md-6 px-xl-0 text-center text-md-right">
+                <img class="img-fluid" src="img/payments.png" alt="">
+            </div>
+        </div>
+          
+    </div>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

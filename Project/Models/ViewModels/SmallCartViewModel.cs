@@ -1,0 +1,9 @@
+﻿namespace Project.Models.ViewModels
+{
+    public class SmallCartViewModel
+    {
+
+        public int NumriProdukteve { get; set; }
+        public double TotalCmimi { get; set; }
+    }
+}
